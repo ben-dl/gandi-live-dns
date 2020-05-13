@@ -16,8 +16,10 @@ or clone from git
 
 `git clone https://github.com/ben-dl/gandi-live-dns.git` 
 
-#### Install requirements
-`python3 -m pip install -r requirements.txt`
+#### Create venv & install requirements
+`python3 -m venv venv`
+`source venv/bin/activate` (or similar for other OSs/shells)
+`pip install -r requirements.txt`
 
 #### Script Configuration
 Copy `example-config.yaml` to `~/.config/gandi-live-dns/config.yaml` and edit the file to fit your needs.
@@ -45,10 +47,11 @@ Map of domain name (zone) to the subdomains that need to be updated. Use `@` for
 And run the script:
 
 ```
-user@server:~$ ./gandi-live-dns.py   
+user@server:~$ source venv/bin/activate
+user@server:~$ python gandi-live-dns.py --force
 ```
 
-If your IP has changed, it will be detected and the update will be triggered. 
+If your IP has changed, it will be detected and the update will be triggered. The force option given above is explained in the next section.
 
 #### Command Line Arguments
 
@@ -70,5 +73,5 @@ zone. This can be used if additional/new subdomains get appended to the config f
 
 Run the script every five minutes. 
 ```
-*/5 * * * * /path/to/script/gandi-live-dns.py >/dev/null 2>&1 
+*/5 * * * * /path/to/script/venv/bin/python /path/to/script/gandi-live-dns.py >/dev/null 2>&1 
 ```
