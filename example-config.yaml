@@ -1,0 +1,19 @@
+# IP address lookup service 
+#  http://v4.icanhazip.com
+#  + https://ifconfig.co/ip
+#  + http://ifconfig.me/ip
+#  + http://whatismyip.akamai.com/
+#  + http://ipinfo.io/ip
+#  + many more ...
+iplookup: "http://v4.icanhazip.com"
+api_endpoint: "https://dns.api.gandi.net/api/v5"
+ttl: 300 # in seconds
+accounts:
+  -
+    api_secret: "---my_secret_API_KEY----"
+    # The list of zones to update on the account
+    zones:
+      # List of subdomains (@ for root)
+      mydomain.com: ["@"]
+  -
+    ...
